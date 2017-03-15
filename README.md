@@ -5,4 +5,5 @@ Powered by 遇见小星
 个人博客: blog.yjxxclub.cn
 github: github.com/tengxing
 后台所用框架:SSM
-前台所用框架: Jquery 弹出层lay.js
+前台所用框架: Jquery UI使用LayUI 弹出层layer.js
+欢迎fork 记得start啊 ^_^
