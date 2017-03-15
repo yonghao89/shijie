@@ -17,10 +17,10 @@
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
     <!--视图解析器-->
-   <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"></property>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/page/"></property>
         <property name="suffix" value=".jsp"></property>
-    </bean>-->
+    </bean>
 
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
