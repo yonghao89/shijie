@@ -5,7 +5,7 @@ layui.use(['element', 'layer', 'util'], function () {
     var layer = layui.layer;
     var util = layui.util;
 
-    var index = layer.load(1);
+    /*var index = layer.load(1);
     $.post("/api/admin/GetSiteStatistics", {}, function (data) {
         layer.close(index);
         $("#totalCount").html(data.UserTotalCount);
@@ -13,7 +13,7 @@ layui.use(['element', 'layer', 'util'], function () {
         $("#todayRegist").html(data.TodayRegistCount);
         $("#todayLogin").html(data.TodayLoginCount);
         $("#resourceCount").html(data.ResourceTotalCount);
-    });
+    });*/
 
     $('span.sys-title').click(function (event) {
         event.stopPropagation();    //阻止事件冒泡
