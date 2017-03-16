@@ -1,19 +1,26 @@
-
 layui.use(['element', 'layer', 'util'], function () {
     var $ = layui.jquery;
     var element = layui.element();
     var layer = layui.layer;
     var util = layui.util;
 
+    //加载弹出框
     /*var index = layer.load(1);
-    $.post("/api/admin/GetSiteStatistics", {}, function (data) {
-        layer.close(index);
-        $("#totalCount").html(data.UserTotalCount);
-        $("#articleCount").html(data.ArticleTotalCount);
-        $("#todayRegist").html(data.TodayRegistCount);
-        $("#todayLogin").html(data.TodayLoginCount);
-        $("#resourceCount").html(data.ResourceTotalCount);
-    });*/
+     layer.close(index);*/
+
+    $("#totalCount").html(1);
+    $("#articleCount").html(2);
+    $("#todayRegist").html(2);
+    $("#todayLogin").html(2);
+    $("#resourceCount").html(2);
+    /*$.post("/api/admin/GetSiteStatistics", {}, function (data) {
+     layer.close(index);
+     $("#totalCount").html(data.UserTotalCount);
+     $("#articleCount").html(data.ArticleTotalCount);
+     $("#todayRegist").html(data.TodayRegistCount);
+     $("#todayLogin").html(data.TodayLoginCount);
+     $("#resourceCount").html(data.ResourceTotalCount);
+     });*/
 
     $('span.sys-title').click(function (event) {
         event.stopPropagation();    //阻止事件冒泡
@@ -27,47 +34,48 @@ layui.use(['element', 'layer', 'util'], function () {
     });
 
     //监听快捷菜单点击
-    $('.short-menu .layui-field-box>div>div').click(function () {
-        var elem = this;
-        var url = $(elem).children('span').attr('data-url');
-        var id = $(elem).children('span').attr('data-id');
-        var title = $(elem).children('span').text();
+    /*$('.short-menu .layui-field-box>div>div').click(function () {
+     var elem = this;
+     var url = $(elem).children('span').attr('data-url');
+     var id = $(elem).children('span').attr('data-id');
+     var title = $(elem).children('span').text();
 
-        if (url == undefined) return;
+     if (url == undefined) return;
 
-        var tabTitleDiv = $('.layui-tab[lay-filter=\'tab\']').children('.layui-tab-title');
-        var exist = tabTitleDiv.find('li[lay-id=' + id + ']');
-        if (exist.length > 0) {
-            //切换到指定索引的卡片
-            element.tabChange('tab', id);
-        } else {
-            var index = layer.load(1);
-            $.ajax({
-                type: 'post',
-                url: url,
-                success: function (data) {
-                    layer.close(index);
-                    element.tabAdd('tab', { title: title, content: data, id: id });
-                    //切换到指定索引的卡片
-                    element.tabChange('tab', id);
-                },
-                error: function (e) {
-                    var message = e.responseText;
-                    layer.close(index);
-                    layer.msg(message, { icon: 2 });
-                }
-            });
-        }
-        $('div.short-menu').slideUp('fast');
-    });
+     var tabTitleDiv = $('.layui-tab[lay-filter=\'tab\']').children('.layui-tab-title');
+     var exist = tabTitleDiv.find('li[lay-id=' + id + ']');
+     if (exist.length > 0) {
+     //切换到指定索引的卡片
+     element.tabChange('tab', id);
+     } else {
+     var index = layer.load(1);
+     $.ajax({
+     type: 'post',
+     url: url,
+     success: function (data) {
+     layer.close(index);
+     element.tabAdd('tab', { title: title, content: data, id: id });
+     //切换到指定索引的卡片
+     element.tabChange('tab', id);
+     },
+     error: function (e) {
+     var message = e.responseText;
+     layer.close(index);
+     layer.msg(message, { icon: 2 });
+     }
+     });
+     }
+     $('div.short-menu').slideUp('fast');
+     });*/
     layer.alert('目前已做：<br/>文章管理、资源管理、时光轴管理、文章回收站<br/>网站公告、更新日志、留言管理<br/><br/>点击顶部【部落格后台管理系统】有惊喜', {
         skin: 'layui-layer-molv'
         , closeBtn: 1
-        , anim: 1 //动画类型
+        , anim: 3 //动画类型
     });
 
     //监听左侧导航点击
     element.on('nav(leftnav)', function (elem) {
+
         var url = $(elem).children('a').attr('data-url');
         var id = $(elem).children('a').attr('data-id');
         var title = $(elem).children('a').text();
@@ -76,31 +84,35 @@ layui.use(['element', 'layer', 'util'], function () {
             return;
         }
         if (url == undefined) return;
-
         var tabTitleDiv = $('.layui-tab[lay-filter=\'tab\']').children('.layui-tab-title');
         var exist = tabTitleDiv.find('li[lay-id=' + id + ']');
         if (exist.length > 0) {
             //切换到指定索引的卡片
             element.tabChange('tab', id);
         } else {
-            var index = layer.load(1);
-            $.ajax({
-                type: 'post',
-                url: url,
-                success: function (data) {
-                    layer.close(index);
-                    element.tabAdd('tab', { title: title, content: data, id: id });
-                    //切换到指定索引的卡片
-                    element.tabChange('tab', id);
-                },
-                error: function (e) {
-                    var message = e.responseText;
-                    layer.close(index);
-                    layer.msg(message, { icon: 2 });
-                }
-            });
+            element.tabAdd('tab', { title: title, content: load(url), id: id });
+            element.tabChange('tab', id);
+            /*var index = layer.load(1);
+             layer.close(index);*/
+
         }
     });
+    //
+    function load(url){
+        var data;
+        $.ajax({
+            type: 'post',
+            url: url,
+            success: function (data) {
+                data = data;
+            },
+            error: function (e) {
+                data = e.responseText;
+            }
+        });
+
+        return data;
+    }
 
     //左侧导航展开与收缩
     var ishide = false;

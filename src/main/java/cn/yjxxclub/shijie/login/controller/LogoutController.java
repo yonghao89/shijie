@@ -8,24 +8,22 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Author: 遇见小星
  * Email: tengxing7452@163.com
- * Date: 17-3-15
- * Time: 下午9:20
- * Describe: 登录模块controller
+ * Date: 17-3-16
+ * Time: 下午7:55
+ * Describe: 登出模块
  */
 @Controller
-@RequestMapping("/login")
-public class LoginController {
+@RequestMapping("/")
+public class LogoutController {
 
     /**
-     * 登录
+     * 登出
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView index(){
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ModelAndView logout(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("main");
+        mv.setViewName("redirect:index.jsp");
         return mv;
     }
-
-
 }
