@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+    <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +15,15 @@
     <meta name="Description" content="">
     <title>视界开源监测管理系统</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css"/>
-         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.css" rel="stylesheet">
+    <script>
+        var rootPath = "${ctx}";
+        var tb = $("#loadhtml");
+        		tb.load(rootPath+"/init.jsp");
+    </script>
 
 </head>
 
@@ -43,47 +55,36 @@
                         <a href="javascript:;"><i class="fa fa-home"></i>首页</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-file-text"></i>监控管理</a>
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>系统监控管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="/Admin/Article" data-id="1">文章管理</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/Resource" data-id="2">资源管理</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/TimeLine" data-id="3">时光轴管理</a></dd>
-                            <dd><a href="javascript:;">笔记本管理</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/Article/Recycled" data-id="4">文章回收站</a></dd>
-                            <dd><a href="javascript:;">资源回收站</a></dd>
+                            <dd><a href="javascript:;" data-url="/Admin/Article" data-id="1">告警列表</a></dd>
+                            <dd><a href="javascript:;" data-url="/Admin/Resource" data-id="2">实时监控</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>用户管理</a>
+                        <a href="javascript:;"><i class="fa fa-user"></i>系统用户管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">全部用户</a></dd>
-                            <dd><a href="javascript:;">黑名单管理</a></dd>
+                            <dd><a href="javascript:;">系统用户</a></dd>
+                            <dd><a href="javascript:;">权限分配</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-wrench"></i>扩展管理</a>
+                        <a href="javascript:;"><i class="fa fa-wrench"></i>网站信息管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">友情链接</a></dd>
-                            <dd><a href="javascript:;">博主信息</a></dd>
                             <dd><a href="javascript:;">网站信息</a></dd>
+                            <dd><a href="javascript:;">网站统计</a></dd>
+                            <dd><a href="javascript:;" data-url="/Admin/TimeLine" data-id="3">更新日志</a></dd>
                             <dd><a href="javascript:;" data-url="/Admin/System/AnnouncementIndex" data-id="5">网站公告</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/System/UpdateLogIndex" data-id="6">更新日志</a></dd>
+                            <dd><a href="javascript:;" data-url="/Admin/System/UpdateLogIndex" data-id="6">登录记录</a></dd>
+                            <dd><a href="javascript:;">黑名单管理</a></dd>
                             <dd><a href="javascript:;" data-url="/Admin/System/LeaveMessageIndex" data-id="7">留言管理</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-cog"></i>系统配置</a>
+                        <a href="javascript:;"><i class="fa fa-cog"></i>网站系统设置</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">SEO配置</a></dd>
-                            <dd><a href="javascript:;">QQ互联</a></dd>
-                            <dd><a href="javascript:;">数据库配置</a></dd>
-                            <dd><a href="javascript:;">站点地图</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-info-circle"></i>其他信息</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">操作日志</a></dd>
+                            <dd><a href="javascript:;">网站开放</a></dd>
+                            <dd><a href="javascript:;">安全退出</a></dd>
                         </dl>
                     </li>
                 </ul>
@@ -98,44 +99,8 @@
                     <li lay-id="0" class="layui-this">首页</li>
                 </ul>
                 <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
-                        <p style="padding: 10px 15px; margin-bottom: 20px; margin-top: 10px; border:1px solid #ddd;display:inline-block;">
-                            上次登陆
-                            <span style="padding-left:1em;">IP：113.249.245.125</span>
-                            <span style="padding-left:1em;">地点：未知</span>
-                            <span style="padding-left:1em;">时间：2017/3/15 21:30:35</span>
-                        </p>
-                        <fieldset class="layui-elem-field layui-field-title">
-                            <legend>统计信息</legend>
-                            <div class="layui-field-box">
-                                <div style="display: inline-block; width: 100%;">
-                                    <div class="ht-box layui-bg-blue">
-                                        <p id="totalCount">0</p>
-                                        <p>用户总数</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-red">
-                                        <p id="todayRegist">0</p>
-                                        <p>今日注册</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-green">
-                                        <p id="todayLogin">0</p>
-                                        <p>今日登陆</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-orange">
-                                        <p id="articleCount">0</p>
-                                        <p>文章总数</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-cyan">
-                                        <p id="resourceCount">0</p>
-                                        <p>资源总数</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-black">
-                                        <p id="noteCount">0</p>
-                                        <p>笔记总数</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
+                    <div class="layui-tab-item layui-show" id = "loadhtml">
+                        <jsp:include page="init.jsp"/>
                     </div>
                 </div>
             </div>
