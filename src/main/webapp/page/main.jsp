@@ -36,7 +36,7 @@
             <ul class="layui-nav" lay-filter="">
                 <li class="layui-nav-item"><a target="_blank" href="http://www.yjxxclub.cn/">前台入口</a></li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">游客专用账号<span class="layui-nav-more"></span></a>
+                    <a href="javascript:;">测试账号<span class="layui-nav-more"></span></a>
                     <dl class="layui-nav-child">
                         <!-- 二级菜单 -->
                         <dd><a href="javascript:;">个人信息</a></dd>
@@ -57,8 +57,8 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>系统监控管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="/Admin/Article" data-id="1">告警列表</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/Resource" data-id="2">实时监控</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx}/monitor/alarm" data-id="1">告警列表</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx}/monitor/realTime" data-id="2">实时监控</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
@@ -73,11 +73,11 @@
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;">网站信息</a></dd>
                             <dd><a href="javascript:;">网站统计</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/TimeLine" data-id="3">更新日志</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/System/AnnouncementIndex" data-id="5">网站公告</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/System/UpdateLogIndex" data-id="6">登录记录</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx}/Admin/TimeLine" data-id="3">更新日志</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx}/Admin/System/AnnouncementIndex" data-id="5">网站公告</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx}/Admin/System/UpdateLogIndex" data-id="6">登录记录</a></dd>
                             <dd><a href="javascript:;">黑名单管理</a></dd>
-                            <dd><a href="javascript:;" data-url="/Admin/System/LeaveMessageIndex" data-id="7">留言管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx}/Admin/System/LeaveMessageIndex" data-id="7">留言管理</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">

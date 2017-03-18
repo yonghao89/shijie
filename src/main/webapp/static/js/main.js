@@ -66,16 +66,15 @@ layui.use(['element', 'layer', 'util'], function () {
      });
      }
      $('div.short-menu').slideUp('fast');
-     });*/
+     });
     layer.alert('目前已做：<br/>文章管理、资源管理、时光轴管理、文章回收站<br/>网站公告、更新日志、留言管理<br/><br/>点击顶部【部落格后台管理系统】有惊喜', {
         skin: 'layui-layer-molv'
         , closeBtn: 1
         , anim: 3 //动画类型
-    });
+    });*/
 
     //监听左侧导航点击
     element.on('nav(leftnav)', function (elem) {
-
         var url = $(elem).children('a').attr('data-url');
         var id = $(elem).children('a').attr('data-id');
         var title = $(elem).children('a').text();
@@ -84,35 +83,31 @@ layui.use(['element', 'layer', 'util'], function () {
             return;
         }
         if (url == undefined) return;
+
         var tabTitleDiv = $('.layui-tab[lay-filter=\'tab\']').children('.layui-tab-title');
         var exist = tabTitleDiv.find('li[lay-id=' + id + ']');
         if (exist.length > 0) {
             //切换到指定索引的卡片
             element.tabChange('tab', id);
         } else {
-            element.tabAdd('tab', { title: title, content: load(url), id: id });
-            element.tabChange('tab', id);
-            /*var index = layer.load(1);
-             layer.close(index);*/
-
+            var index = layer.load(1);
+            $.ajax({
+                type: 'post',
+                url: url,
+                success: function (data) {
+                    layer.close(index);
+                    element.tabAdd('tab', { title: title, content: data, id: id });
+                    //切换到指定索引的卡片
+                    element.tabChange('tab', id);
+                },
+                error: function (e) {
+                    var message = e.responseText;
+                    layer.close(index);
+                    layer.msg(message, { icon: 2 });
+                }
+            });
         }
     });
-    //
-    function load(url){
-        var data;
-        $.ajax({
-            type: 'post',
-            url: url,
-            success: function (data) {
-                data = data;
-            },
-            error: function (e) {
-                data = e.responseText;
-            }
-        });
-
-        return data;
-    }
 
     //左侧导航展开与收缩
     var ishide = false;
