@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/monitor/realTime")
-public class RealTime {
+public class RealTimeController {
 }
