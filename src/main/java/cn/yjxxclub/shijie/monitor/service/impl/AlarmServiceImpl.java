@@ -4,6 +4,7 @@ import cn.yjxxclub.shijie.monitor.mapper.AlarmMapper;
 import cn.yjxxclub.shijie.monitor.model.Alarm;
 import cn.yjxxclub.shijie.monitor.service.AlarmService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Service;
  * Time: 下午10:31
  * Describe: 实现接口
  */
-@Service("AlarmService")
+@Service
 public class AlarmServiceImpl extends ServiceImpl<AlarmMapper,Alarm> implements AlarmService {
+
+    @Autowired
+    private AlarmMapper alarmMapper;
 }

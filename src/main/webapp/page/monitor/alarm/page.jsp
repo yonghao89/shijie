@@ -65,7 +65,5 @@
         </div>
     </div>
 </fieldset>
-<script>
-    alert(rootPath)
-</script>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/monitor/alarm/alarm.js"></script>
