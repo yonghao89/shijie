@@ -99,9 +99,9 @@ function initilArticle(currentIndex, pageSize) {
 
     $.ajax({
         type: 'post',
-        url: '/api/admin/GetArticlesByPage',
+        url: rootPath+'/monitor/alarm/list',
         contentType: 'application/json',
-        data: JSON.stringify({ "currentIndex": currentIndex, "pageSize": pageSize }),
+        data: { "currentIndex": currentIndex, "pageSize": pageSize },
         datatype: 'json',
         success: function (res) {
             layer.close(index);

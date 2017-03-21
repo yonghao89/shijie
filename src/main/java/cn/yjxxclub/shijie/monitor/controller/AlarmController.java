@@ -1,13 +1,18 @@
 package cn.yjxxclub.shijie.monitor.controller;
 
+import cn.yjxxclub.shijie.monitor.model.Alarm;
 import cn.yjxxclub.shijie.monitor.service.AlarmService;
-import com.alibaba.druid.mock.MockArray;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Author: 遇见小星
@@ -20,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/monitor/alarm")
 public class AlarmController {
 
-    @Autowired
+
     AlarmService alarmService;
 
     @RequestMapping(value = "", method = RequestMethod.POST)
@@ -30,9 +35,15 @@ public class AlarmController {
         return mv;
     }
 
+    @ResponseBody
     @RequestMapping(value = "list", method = RequestMethod.POST)
-    public Object list(){
-
+    public Object list(@RequestParam(value = "currentIndex", required = false)String current,@RequestParam(value = "pageSize", required = false)String size){
+        System.out.println(current+":"+size);
+        Map<String,Object> map = new HashedMap();
+        map.put("current",Integer.parseInt(current));
+        map.put("size",Integer.parseInt(size));
+        System.out.println(map.size());
+        //List<Alarm> list = alarmService.selectByMap(map);
         return null;
     }
 }
