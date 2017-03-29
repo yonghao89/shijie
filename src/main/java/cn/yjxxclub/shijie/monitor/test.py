@@ -1,4 +1,8 @@
+import sys
+name = "null"
+if(sys.argv[1]!= None):
 
-print "tengxing"
+    name = sys.argv[1]
+print name
 def adder(a, b):
     return a + b
