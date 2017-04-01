@@ -99,7 +99,7 @@ function initilArticle(currentIndex, pageSize) {
 
     $.ajax({
         type: 'post',
-        url: rootPath+'/monitor/alarm/list',
+        url: rootPath+'/monitor/alarm/lists',
         contentType: 'application/json',
         data: { "currentIndex": currentIndex, "pageSize": pageSize },
         datatype: 'json',

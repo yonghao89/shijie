@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,6 +44,17 @@ public class AlarmController {
         map.put("size",Integer.parseInt(size));
         System.out.println(map.size());
         //List<Alarm> list = alarmService.selectByMap(map);
+        return null;
+    }
+    @ResponseBody
+    @RequestMapping(value = "lists", method = RequestMethod.POST)
+    public Object lists(){
+        //System.out.println(current+":"+size);
+        Map<String,Object> map = new HashedMap();
+        map.put("current",Integer.parseInt("1"));
+        map.put("size",Integer.parseInt("10"));
+        System.out.println(map.size());
+        List<Alarm> list = alarmService.selectByMap(map);
         return null;
     }
 }

@@ -17,6 +17,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class AlarmServiceImpl extends ServiceImpl<AlarmMapper,Alarm> implements AlarmService {
 
-    @Autowired
-    private AlarmMapper alarmMapper;
+
 }
