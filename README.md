@@ -13,7 +13,7 @@
 - Plugin体系结构，扩展性强
 - 多视图支持，支持FreeMarker、JSP、Velocity
 - 强大的Validator后端校验功能
-- 功能齐全，拥有struts2的绝大部分功能
+- 功能齐全，拥有spring的绝大部分功能
 - 体积小仅218K，且无第三方依赖
 
 #### 主要技术:
