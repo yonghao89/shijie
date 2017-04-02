@@ -1,6 +1,7 @@
-package cn.yjxxclub.shijie.monitor.mapper;
+package cn.yjxxclub.shijie.mapper;
 
-import cn.yjxxclub.shijie.monitor.model.Alarm;
+
+import cn.yjxxclub.shijie.entity.Alarm;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
@@ -10,5 +11,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * Time: 上午11:35
  * Describe:
  */
-public interface AlarmMapper extends BaseMapper<Alarm>{
+public interface AlarmMapper extends BaseMapper<Alarm> {
 }

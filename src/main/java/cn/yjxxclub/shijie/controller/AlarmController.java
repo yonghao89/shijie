@@ -1,7 +1,8 @@
-package cn.yjxxclub.shijie.monitor.controller;
+package cn.yjxxclub.shijie.controller;
 
-import cn.yjxxclub.shijie.monitor.model.Alarm;
-import cn.yjxxclub.shijie.monitor.service.AlarmService;
+
+import cn.yjxxclub.shijie.entity.Alarm;
+import cn.yjxxclub.shijie.service.AlarmService;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

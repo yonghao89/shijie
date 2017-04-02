@@ -20,7 +20,7 @@
 	<!-- 进行mybatis 配置 -->
 	<typeAliases>
 		<!-- 为类型 起了别名 -->
-		<typeAlias type="cn.yjxxclub.shijie.monitor.model.Alarm" alias="Alarm"/>
+		<typeAlias type="cn.yjxxclub.shijie.entity.Alarm" alias="Alarm"/>
 
 	</typeAliases>
 	<!--如分页执行语句前调用插件， -->

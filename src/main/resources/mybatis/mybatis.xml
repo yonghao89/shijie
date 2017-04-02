@@ -17,68 +17,45 @@
 		p:dataSource-ref="dataSource" p:configLocation="classpath:mybatis/mybatis-config.xml"
 		p:mapperLocations="classpath*:mapper/*.xml" />-->
 	<!--使用baomidou-->
+	<!-- Spring整合Mybatis，更多查看文档：http://mp.baomidou.com -->
 	<bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
-		<!-- 配置数据源 -->
 		<property name="dataSource" ref="dataSource"/>
-		<!-- 自动扫描 Xml 文件位置 -->
-		<property name="mapperLocations" value="classpath*:mapper/*.xml"/>
-		<!-- 配置 Mybatis 配置文件（可无） -->
+		<!-- 自动扫描Mapping.xml文件 -->
+		<property name="mapperLocations" value="classpath:mapper/*.xml"/>
 		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
-		<!-- 配置包别名 -->
-		<property name="typeAliasesPackage" value="cn.yjxxclub.shijie.*.model"/>
+		<property name="typeAliasesPackage" value="cn.yjxxclub.shijie.entity"/>
 
-		<!-- 以上配置和传统 Mybatis 一致 -->
-
-		<!-- 插件配置 -->
-		<property name="plugins">
-			<array>
-				<!-- 分页插件配置 -->
-				<bean id="paginationInterceptor" class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
-					<!-- 指定数据库方言 -->
-					<property name="dialectType" value="mysql"/>
-				</bean>
-				<!-- 如需要开启其他插件，可配置于此 -->
-			</array>
-		</property>
-
-		<!-- MP 全局配置注入 -->
-		<property name="globalConfig" ref="globalConfig"/>
+		<!-- 全局配置注入 -->
+		<property name="globalConfig" ref="globalConfig" />
 	</bean>
-
-	<!-- 定义 MP 全局策略 -->
 	<bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
-		<!-- 主键策略配置 -->
-		<!-- 可选参数
+		<!--
             AUTO->`0`("数据库ID自增")
-            INPUT->`1`(用户输入ID")
+             INPUT->`1`(用户输入ID")
             ID_WORKER->`2`("全局唯一ID")
             UUID->`3`("全局唯一ID")
         -->
-		<property name="idType" value="2"/>
-
-		<!-- 数据库类型配置 -->
-		<!-- 可选参数（默认mysql）
-            MYSQL->`mysql`
-            ORACLE->`oracle`
-            DB2->`db2`
-            H2->`h2`
-            HSQL->`hsql`
-            SQLITE->`sqlite`
-            POSTGRE->`postgresql`
-            SQLSERVER2005->`sqlserver2005`
-            SQLSERVER->`sqlserver`
-        -->
-		<property name="dbType" value="oracle"/>
-
+		<property name="idType" value="2" />
+		<!--
+			MYSQL->`mysql`
+			ORACLE->`oracle`
+			DB2->`db2`
+			H2->`h2`
+			HSQL->`hsql`
+			SQLITE->`sqlite`
+			POSTGRE->`postgresql`
+			SQLSERVER2005->`sqlserver2005`
+			SQLSERVER->`sqlserver`
+		-->
+		<!-- Oracle需要添加该项 -->
+		<!-- <property name="dbType" value="oracle" /> -->
 		<!-- 全局表为下划线命名设置 true -->
-		<property name="dbColumnUnderline" value="true"/>
+		<!-- <property name="dbColumnUnderline" value="true" /> -->
 	</bean>
 
-	<!-- spring与mybatis整合配置，扫描所有dao 通过comment jsr003 -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-		p:basePackage="cn.yjxxclub.shijie.*.mapper" p:sqlSessionFactoryBeanName="sqlSessionFactory" />
-		
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory" />
+	<!-- MyBatis 动态扫描  -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.yjxxclub.shijie.mapper"/>
 	</bean>
+
 </beans>

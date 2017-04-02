@@ -1,4 +1,4 @@
-package cn.yjxxclub.shijie.login.controller;
+package cn.yjxxclub.shijie.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,22 +8,24 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Author: 遇见小星
  * Email: tengxing7452@163.com
- * Date: 17-3-16
- * Time: 下午7:55
- * Describe: 登出模块
+ * Date: 17-3-15
+ * Time: 下午9:20
+ * Describe: 登录模块controller
  */
 @Controller
-@RequestMapping("/")
-public class LogoutController {
+@RequestMapping("/login")
+public class LoginController {
 
     /**
-     * 登出
+     * 登录
      * @return
      */
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public ModelAndView logout(){
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView index(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("redirect:index.jsp");
+        mv.setViewName("main");
         return mv;
     }
+
+
 }

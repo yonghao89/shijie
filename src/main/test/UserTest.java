@@ -1,7 +1,13 @@
-package cn.yjxxclub.shijie;
+/**
+ * Author: 遇见小星
+ * Email: tengxing7452@163.com
+ * Date: 17-4-2
+ * Time: 上午9:24
+ * Describe:
+ */
 
-import cn.yjxxclub.shijie.monitor.model.Alarm;
-import cn.yjxxclub.shijie.monitor.service.AlarmService;
+import cn.yjxxclub.shijie.entity.Alarm;
+import cn.yjxxclub.shijie.service.AlarmService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

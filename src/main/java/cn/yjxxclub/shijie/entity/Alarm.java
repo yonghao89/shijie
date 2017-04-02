@@ -1,4 +1,4 @@
-package cn.yjxxclub.shijie.monitor.model;
+package cn.yjxxclub.shijie.entity;
 
 import com.baomidou.mybatisplus.annotations.TableName;
 
