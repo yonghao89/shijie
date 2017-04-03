@@ -31,7 +31,7 @@
     <!-- 布局容器 -->
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
-            <img src="./不落阁后台管理系统_files/Logo_100_透明.png">
+            <img src="${ctx}/static/images/springboot.gif">
             <span class="sys-title">视界开源监测管理系统</span>
             <ul class="layui-nav" lay-filter="">
                 <li class="layui-nav-item"><a target="_blank" href="http://www.yjxxclub.cn/">前台入口</a></li>

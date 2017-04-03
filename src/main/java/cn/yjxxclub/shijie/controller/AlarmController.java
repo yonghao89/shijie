@@ -1,8 +1,12 @@
 package cn.yjxxclub.shijie.controller;
 
 
+
+import cn.yjxxclub.base.controller.BaseController;
 import cn.yjxxclub.shijie.entity.Alarm;
 import cn.yjxxclub.shijie.service.AlarmService;
+import com.baomidou.mybatisplus.plugins.Page;
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +28,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/monitor/alarm")
-public class AlarmController {
+public class AlarmController extends BaseController {
 
     @Autowired
     AlarmService alarmService;
@@ -55,7 +59,12 @@ public class AlarmController {
         map.put("current",Integer.parseInt("1"));
         map.put("size",Integer.parseInt("10"));
         System.out.println(map.size());
-        List<Alarm> list = alarmService.selectByMap(map);
-        return null;
+        Page<Alarm> page =new Page(1,10);
+        Page<Alarm> list = alarmService.selectPage(page,null);
+        System.out.println(list.getRecords());
+        JSONObject result=new JSONObject();
+        result.put("success",true);
+        result.put("data",list.getRecords());
+        return result;
     }
 }

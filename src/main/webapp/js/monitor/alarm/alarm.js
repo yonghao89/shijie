@@ -105,25 +105,27 @@ function initilArticle(currentIndex, pageSize) {
         datatype: 'json',
         success: function (res) {
             layer.close(index);
-            if (res.Success) {
-                var data = res.Data;
+            if (res.success) {
+                var data = res.data;
                 var html = '';
-                html += '<table style="" class="layui-table" lay-even>';
-                html += '<colgroup><col width="180"><col><col width="150"><col width="180"><col width="90"><col width="90"><col width="50"><col width="50"></colgroup>';
-                html += '<thead><tr><th>发表时间</th><th>标题</th><th>作者</th><th>类别</th><th colspan="2">选项</th><th colspan="2">操作</th></tr></thead>';
+                html += '<table style="" class="layui-table">';
+                html += '<colgroup><col width="5"><col width="45"><col width="45"><col width="45"><col width="45"><col width="45"> <col width="45"><col width="90"><col width="100"><col width="150"></colgroup>';
+                html += '<thead><tr><th></th></th><th>预设cpu使用率</th><th>cpu使用率</th><th>预设Jvm使用率</th><th>Jvm使用率</th><th>预设Ram使用率</th><th>Ram使用率</th><th>发送的邮件</th><th>发送时间</th><th>备注</th></tr></thead>';
                 html += '<tbody>';
                 //遍历文章集合
                 for (var i = 0; i < data.length; i++) {
                     var item = data[i];
                     html += "<tr>";
-                    html += "<td>" + new Date(item.ReleaseTime.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')).Format("yyyy-MM-dd hh:mm:ss") + "</td>";
-                    html += "<td>" + item.ArticleTitle + "</td>";
-                    html += "<td>" + item.ArticleAuthor + "</td>";
-                    html += "<td>" + item.Category.CategoryName + "</td>";
-                    html += '<td><form class="layui-form" action=""><div class="layui-form-item" style="margin:0;"><input type="checkbox" name="top" title="置顶" value="' + item.ArticleId + '" lay-filter="top" ' + (item.OrderBy > 0 ? 'checked' : '') + ' /></div></form></td>';
-                    html += '<td><form class="layui-form" action=""><div class="layui-form-item" style="margin:0;"><input type="checkbox" name="top" title="推荐" value="' + item.ArticleId + '" lay-filter="recommend" ' + (item.IsRecommend ? 'checked' : '') + ' /></div></form></td>';
-                    html += '<td><button class="layui-btn layui-btn-small layui-btn-normal" onclick="editArticle(\'' + item.ArticleId + '\')"><i class="layui-icon">&#xe642;</i></button></td>';
-                    html += '<td><button class="layui-btn layui-btn-small layui-btn-danger" onclick="deleteArticle(\'' + item.ArticleId + '\')"><i class="layui-icon">&#xe640;</i></button></td>';
+                    html += "<td><input type='checkbox' lay-skin='primary' lay-filter='allChoose'></td>";
+                    html += "<td>" + item.setCpuUsage+ "</td>";
+                    html += "<td>" + item.cpuUsage + "</td>";
+                    html += "<td>" + item.setJvmUsage + "</td>";
+                    html += "<td>" + item.jvmUsage + "</td>";
+                    html += "<td>" + item.setRamUsage + "</td>";
+                    html += "<td>" + item.ramUsage + "</td>";
+                    html += "<td>" + item.email+ "</td>";
+                    html += "<td>" + item.operTime+ "</td>"
+                    html += "<td>" + item.mark+ "</td>"
                     html += "</tr>";
                 }
                 html += '</tbody>';
@@ -134,7 +136,7 @@ function initilArticle(currentIndex, pageSize) {
 
                 form.render('checkbox');  //重新渲染CheckBox，编辑和添加的时候
                 $('#articleConsole,#articleList').attr('style', 'display:block'); //显示FiledBox
-                $('#articleBoxTitle').text("文章列表");    //FileBox标题改为文章列表
+                $('#articleBoxTitle').text("告警列表");    //FileBox标题改为告警列表
 
                 pages = res.SubCode;
 
