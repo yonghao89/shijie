@@ -8,6 +8,7 @@ import cn.yjxxclub.shijie.service.AlarmService;
 import com.baomidou.mybatisplus.plugins.Page;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
+import org.python.antlr.op.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,9 +43,9 @@ public class AlarmController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "list", method = RequestMethod.POST)
-    public Object list(@RequestParam(value = "currentIndex", required = false)String current,@RequestParam(value = "pageSize", required = false)String size){
+    public Object list(@RequestParam(value = "currentIndex", required = false)Integer current,@RequestParam(value = "pageSize", required = false)Integer size){
         System.out.println(current+":"+size);
-        Page<Alarm> page =new Page(Integer.parseInt(current),Integer.parseInt(size));
+        Page<Alarm> page =new Page(current,size);
         Page<Alarm> list = alarmService.selectPage(page,null);
         System.out.println(list.getRecords());
         JSONObject result=new JSONObject();
