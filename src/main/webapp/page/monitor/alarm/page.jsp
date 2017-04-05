@@ -46,5 +46,6 @@
         </div>
     </div>
 </fieldset>
+<div id="pageNav"></div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/monitor/alarm/alarm.js"></script>

@@ -4,7 +4,6 @@ layui.use(['laypage', 'layer', 'form'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form();
-
     initilArticle(1, 8);
 
     //监听置顶CheckBox
@@ -95,13 +94,13 @@ function initilArticle(currentIndex, pageSize) {
     var $ = layui.jquery;
     var form = layui.form();
     var laypage = layui.laypage;
-    var laypageId = 'articlePageNav';
+    var laypageId = 'pageNav';
 
     $.ajax({
         type: 'post',
-        url: rootPath+'/monitor/alarm/lists',
+        url: rootPath+'/monitor/alarm/list',
         contentType: 'application/json',
-        data: { "currentIndex": currentIndex, "pageSize": pageSize },
+        data: JSON.stringify({ "currentIndex": currentIndex, "pageSize": pageSize }),
         datatype: 'json',
         success: function (res) {
             layer.close(index);
@@ -138,12 +137,12 @@ function initilArticle(currentIndex, pageSize) {
                 $('#articleConsole,#articleList').attr('style', 'display:block'); //显示FiledBox
                 $('#articleBoxTitle').text("告警列表");    //FileBox标题改为告警列表
 
-                pages = res.SubCode;
+                pages = res.pages;
 
                 laypage({
                     cont: laypageId,
                     pages: pages,
-                    groups: 8,
+                    groups: 5,
                     skip: true,
                     curr: currentIndex,
                     jump: function (obj, first) {

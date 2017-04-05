@@ -44,27 +44,14 @@ public class AlarmController extends BaseController {
     @RequestMapping(value = "list", method = RequestMethod.POST)
     public Object list(@RequestParam(value = "currentIndex", required = false)String current,@RequestParam(value = "pageSize", required = false)String size){
         System.out.println(current+":"+size);
-        Map<String,Object> map = new HashedMap();
-        map.put("current",Integer.parseInt(current));
-        map.put("size",Integer.parseInt(size));
-        System.out.println(map.size());
-        //List<Alarm> list = alarmService.selectByMap(map);
-        return null;
-    }
-    @ResponseBody
-    @RequestMapping(value = "lists", method = RequestMethod.POST)
-    public Object lists(){
-        //System.out.println(current+":"+size);
-        Map<String,Object> map = new HashedMap();
-        map.put("current",Integer.parseInt("1"));
-        map.put("size",Integer.parseInt("10"));
-        System.out.println(map.size());
-        Page<Alarm> page =new Page(1,10);
+        Page<Alarm> page =new Page(Integer.parseInt(current),Integer.parseInt(size));
         Page<Alarm> list = alarmService.selectPage(page,null);
         System.out.println(list.getRecords());
         JSONObject result=new JSONObject();
         result.put("success",true);
         result.put("data",list.getRecords());
+        Integer allSize = alarmService.selectCount(null);
+        result.put("pages",allSize);
         return result;
     }
 }
