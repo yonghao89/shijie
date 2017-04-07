@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css"/>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/echarts/echarts.min.js"></script>
     <link href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.css" rel="stylesheet">
     <script>
         var rootPath = "${ctx}";

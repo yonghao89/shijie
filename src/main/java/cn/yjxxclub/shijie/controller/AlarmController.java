@@ -43,7 +43,8 @@ public class AlarmController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "list", method = RequestMethod.POST)
-    public Object list(@RequestParam(value = "currentIndex", required = false)Integer current,@RequestParam(value = "pageSize", required = false)Integer size){
+    public Object list(@RequestParam(value = "currentIndex", required = false)Integer current,
+                       @RequestParam(value = "pageSize", required = false)Integer size){
         System.out.println(current+":"+size);
         Page<Alarm> page =new Page(current,size);
         Page<Alarm> list = alarmService.selectPage(page,null);
