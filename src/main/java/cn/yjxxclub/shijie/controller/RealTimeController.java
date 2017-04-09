@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -43,6 +44,7 @@ public class RealTimeController extends BaseController{
      * 服务器信息
      * @return
      */
+    @ResponseBody
     @RequestMapping(value = "/info", method = RequestMethod.POST)
     public Object info(){
         log.info("-exe");

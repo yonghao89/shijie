@@ -13,7 +13,7 @@
         					<div class="panel-body">
         						<table style="width: 100%;">
         							<tr>
-        								<td width="33.3%"><canvas id="main_one" style="height: 240px;"></canvas></td>
+        								<td width="33.3%"><div id="main_one" style="height: 240px;"></div></td>
         								<td width="33.3%"><div id="main_two" style="height: 240px;"></div></td>
         								<td width="33.3%"><div id="main_three"
         										style="height: 240px;"></div></td>
@@ -22,46 +22,15 @@
         					</div>
         				</section>
         			</div>
-        			<script>
-        			    one = $("#main_one");
-        			    var chart_one = echarts.init($(one));
-
-        			    option = {
-                            tooltip : {
-                                formatter: "{a} <br/>{b} : {c}%"
-                            },
-                            toolbox: {
-                                feature: {
-                                    restore: {},
-                                    saveAsImage: {}
-                                }
-                            },
-                            series: [
-                                {
-                                    name: '业务指标',
-                                    type: 'gauge',
-                                    detail: {formatter:'{value}%'},
-                                    data: [{value: 50, name: '完成率'}]
-                                }
-                            ]
-                        };
-
-                        setInterval(function () {
-                            option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-                            myChart.setOption(option, true);
-                        },2000);
-
-        			    chart_one.setOption(option);
-
-
-        			</script>
         			<div class="col-md-6">
                             				<section class="panel panel-info portlet-item">
                             					<header class="panel-heading">
                             						<i class="fa fa-th-list"></i> 服务器信息
                             					</header>
-                            					<div class="panel-body" style="padding: 0px"
-                            						data-url="/monitor/systemInfo.shtml"></div>
+                            					<div class="panel-body" style="padding: 0px">
+                            					    <div id="info"></div>
+
+                            					</div>
                             				</section>
                             			</div>
                             			<div class="col-md-6">
@@ -77,3 +46,5 @@
                             			</div>
     </section>
 </fieldset>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/monitor/realTime/realTime.js">
+</script>
